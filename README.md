@@ -36,7 +36,9 @@ Tes browser memeriksa navigasi, tautan layanan, menu ponsel, FAQ, ukuran layar, 
 
 ## Vercel
 
-Website ini dapat diterbitkan sebagai **proyek Vercel baru pada akun yang sama**, dengan framework Vite, perintah build `npm run build`, dan direktori output `dist`. Proyek Vercel `portal-warga` yang sudah online memiliki repositori dan pengaturan root tersendiri; jangan menggantinya tanpa persetujuan karena dapat memengaruhi situs produksi. Tidak ada variabel lingkungan Supabase yang diperlukan untuk beranda ini.
+Rilis awal tersedia di [web-rt-xi.vercel.app](https://web-rt-xi.vercel.app) sebagai proyek Vercel `web-rt` yang terpisah. Proyek `portal-warga` yang sudah online memiliki repositori dan pengaturan root tersendiri; jangan menggantinya tanpa persetujuan karena dapat memengaruhi situs produksi. Tidak ada variabel lingkungan Supabase yang diperlukan untuk beranda ini.
+
+Integrasi GitHub pada Vercel belum memiliki akses ke repositori `web-rt`. Rilis awal dibuat dari snapshot commit `8f82b124b32de845d46703901d6f7beab0a6ba2a`; perubahan baru **tidak otomatis diterbitkan**. Untuk mengaktifkan deployment otomatis, berikan akses repositori tersebut ke integrasi GitHub Vercel, hubungkan repositori ke proyek `web-rt`, lalu gunakan framework Vite dengan perintah instalasi `npm ci`, perintah build `npm run build`, dan direktori output `dist`. Perintah instalasi sementara di pengaturan proyek mengunduh snapshot tersebut hanya bila source deployment tidak memiliki `package-lock.json`.
 
 ## Kredit foto ilustrasi
 
