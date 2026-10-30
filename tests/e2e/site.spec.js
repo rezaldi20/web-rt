@@ -7,13 +7,26 @@ test('renders a full-width hero without a background panel and loads its image',
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/');
   await expect(page).toHaveTitle(/Ruang Warga/);
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Lebih dekat,lebih terhubung.');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(/Lebih dekat,.*lebih terhubung\./);
   await expect(page.locator('.hero__image')).toBeVisible();
   expect(await page.locator('.hero__image').evaluate((image) => image.complete && image.naturalWidth > 0)).toBe(true);
   expect(await page.locator('.hero__copy').evaluate((element) => getComputedStyle(element).backgroundColor)).toBe('rgba(0, 0, 0, 0)');
   const hero = await page.locator('.hero').boundingBox();
   expect(hero.width).toBe(page.viewportSize().width);
   expect(errors).toEqual([]);
+});
+
+test('every Indonesian illustration loads and is announced when meaningful', async ({ page }) => {
+  await page.goto('/');
+  const images = page.locator('main img, footer img');
+  const count = await images.count();
+  for (let index = 0; index < count; index += 1) {
+    const image = images.nth(index);
+    await image.scrollIntoViewIfNeeded();
+    await expect.poll(() => image.evaluate((element) => element.complete && element.naturalWidth > 0)).toBe(true);
+    const alt = await image.getAttribute('alt');
+    expect(alt, 'setiap gambar ilustrasi wajib memiliki atribut alt').not.toBeNull();
+  }
 });
 
 test('service cards link to the correct existing portal pages', async ({ page }) => {
@@ -65,7 +78,6 @@ test('layout has no horizontal overflow at common screen widths', async ({ page 
     expect(dimensions.content, `horizontal overflow at ${width}px`).toBeLessThanOrEqual(dimensions.viewport);
   }
 });
-
 
 test('automated accessibility checks pass with the menu and a help answer open', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });

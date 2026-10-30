@@ -7,6 +7,8 @@ import {
   Check,
   ChevronRight,
   FileText,
+  Fingerprint,
+  Globe2,
   HeartHandshake,
   LockKeyhole,
   Menu,
@@ -16,10 +18,11 @@ import {
   ShieldCheck,
   Sparkles,
   UsersRound,
+  Wifi,
   WalletCards,
   X,
 } from 'lucide-react';
-import { faqs, portalLink, services } from './content.js';
+import { connectivity, faqs, portalLink, services } from './content.js';
 
 const iconMap = {
   file: FileText,
@@ -41,9 +44,15 @@ function Brand({ light = false }) {
   return (
     <a className={`brand${light ? ' brand--light' : ''}`} href="#beranda">
       <svg className="brand__mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <rect width="48" height="48" rx="14" fill="currentColor" />
-        <path d="M9.5 26.2 23.7 14 38.5 26.2M14.4 23.8v12.1h18.8V23.8M20.3 35.9v-8.4h6.3v8.4" stroke="var(--logo-stroke, #fffdf7)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="36.2" cy="13" r="3.2" fill="#EDB278" />
+        <rect width="48" height="48" rx="13" fill="currentColor" />
+        <path
+          d="M10.6 26.4 23.9 15 37.6 26.4M15.2 24.2v11.6h17.6V24.2M20.9 35.8v-8.1h6.2v8.1"
+          stroke="var(--logo-stroke, #fffdf7)"
+          strokeWidth="2.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <circle cx="36.4" cy="13.4" r="3.1" fill="#E9B073" />
       </svg>
       <span className="brand__text">
         <span className="brand__name">ruang<span>warga</span><b>.</b></span>
@@ -75,7 +84,6 @@ function Header() {
           ))}
         </nav>
         <div className="header-actions">
-          <a className="header-help" href="#bantuan">Butuh bantuan?</a>
           <a className="button button--header" href={portalLink('masuk')}>
             Masuk Portal <ArrowUpRight size={16} aria-hidden="true" />
           </a>
@@ -115,20 +123,54 @@ function SectionLabel({ children, light = false }) {
 function Hero() {
   return (
     <section id="beranda" className="hero" aria-labelledby="hero-heading">
-      <img className="hero__image" src="/images/lingkungan.jpg" alt="" fetchPriority="high" />
+      <img className="hero__image" src="/images/hero-ruang-warga.jpg" alt="" fetchPriority="high" />
       <div className="hero__shade" aria-hidden="true" />
+      <svg className="hero__grid" aria-hidden="true" focusable="false">
+        <defs>
+          <pattern id="hero-dots" width="26" height="26" patternUnits="userSpaceOnUse">
+            <circle cx="1.5" cy="1.5" r="1.5" fill="currentColor" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#hero-dots)" />
+      </svg>
+      <svg className="hero__network" viewBox="0 0 900 620" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false">
+        <g fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M150 470C260 360 360 300 520 250s230-70 330-150" opacity=".5" />
+          <path d="M210 560c150-90 260-120 400-150s210-70 290-140" opacity=".38" />
+          <path d="M120 360c150-40 280-40 420 20s210 90 330 90" opacity=".3" />
+        </g>
+        <g fill="currentColor">
+          <circle cx="520" cy="250" r="5" />
+          <circle cx="850" cy="100" r="4" />
+          <circle cx="610" cy="410" r="4" />
+          <circle cx="280" cy="330" r="4" />
+        </g>
+        <g fill="none" stroke="currentColor" opacity=".55">
+          <circle cx="520" cy="250" r="18" />
+          <circle cx="520" cy="250" r="34" opacity=".5" />
+          <circle cx="850" cy="100" r="13" opacity=".6" />
+          <circle cx="610" cy="410" r="14" opacity=".5" />
+        </g>
+      </svg>
       <div className="container hero__inner">
         <div className="hero__copy">
-          <div className="hero__eyebrow"><Sparkles size={16} strokeWidth={1.8} aria-hidden="true" /> SELAMAT DATANG DI RUANG WARGA</div>
-          <h1 id="hero-heading">Lebih dekat,<br /><em>lebih terhubung.</em></h1>
-          <p className="hero__description">Kabar lingkungan, layanan warga, dan semangat kebersamaan — semua hadir lebih dekat di satu ruang.</p>
+          <div className="hero__eyebrow">
+            <Sparkles size={16} strokeWidth={1.7} aria-hidden="true" /> SELAMAT DATANG DI RUANG WARGA
+          </div>
+          <h1 id="hero-heading">Lebih dekat, <br /><em>lebih terhubung.</em></h1>
+          <p className="hero__description">
+            Kabar lingkungan, layanan warga, dan semangat kebersamaan — semua hadir lebih dekat di satu ruang.
+          </p>
           <div className="hero__actions">
             <a className="button button--primary" href="#layanan">Jelajahi layanan <ArrowRight size={18} aria-hidden="true" /></a>
             <a className="hero__text-link" href="#tentang">Kenali Ruang Warga <ArrowUpRight size={17} aria-hidden="true" /></a>
           </div>
         </div>
         <div className="hero__bottom">
-          <div className="hero__motto"><span className="hero__motto-icon"><HeartHandshake size={18} aria-hidden="true" /></span><span>Untuk warga,<br /><strong>oleh warga.</strong></span></div>
+          <div className="hero__motto">
+            <span className="hero__motto-icon"><HeartHandshake size={19} aria-hidden="true" /></span>
+            <span>Untuk warga,<br /><strong>oleh warga.</strong></span>
+          </div>
           <a className="hero__scroll" href="#layanan"><span>GULIR UNTUK MENJELAJAHI</span><ArrowDown size={16} aria-hidden="true" /></a>
           <span className="hero__credit">FOTO ILUSTRASI</span>
         </div>
@@ -141,10 +183,41 @@ function WelcomeStrip() {
   return (
     <div className="welcome-strip">
       <div className="container welcome-strip__inner">
-        <div className="welcome-strip__intro"><span className="welcome-strip__hello">Halo, Warga <span aria-hidden="true">✳</span></span><span className="welcome-strip__separator" /><p>Hal-hal baik dimulai dari lingkungan kita.</p></div>
+        <div className="welcome-strip__intro">
+          <span className="welcome-strip__hello">Halo, Warga <span aria-hidden="true">✳</span></span>
+          <span className="welcome-strip__separator" />
+          <p>Hal-hal baik dimulai dari lingkungan kita.</p>
+        </div>
         <a href="#tentang">Lebih dekat dengan kami <ArrowRight size={16} aria-hidden="true" /></a>
       </div>
     </div>
+  );
+}
+
+function ConnectivityStrip() {
+  return (
+    <section className="connectivity" aria-label="Ringkasan konektivitas Ruang Warga">
+      <div className="container connectivity__inner">
+        <div className="connectivity__intro">
+          <Wifi size={18} strokeWidth={1.7} aria-hidden="true" />
+          <p><strong>Satu jaringan warga.</strong> Terhubung dari lingkungan ke lingkungan.</p>
+        </div>
+        <dl className="connectivity__stats">
+          {connectivity.map((item) => (
+            <div key={item.title}>
+              <dt>
+                <span className="connectivity__value">{item.value}</span>
+                <span className="connectivity__unit">{item.unit}</span>
+              </dt>
+              <dd>
+                <strong>{item.title}</strong>
+                <small>{item.description}</small>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
   );
 }
 
@@ -153,15 +226,20 @@ function ServiceCard({ service }) {
   return (
     <a className="service-card" href={portalLink(service.path)}>
       <div className="service-card__top">
-        <span className={`service-card__icon service-card__icon--${service.tone}`}><Icon size={23} strokeWidth={1.7} aria-hidden="true" /></span>
-        <ArrowUpRight className="service-card__corner" size={19} aria-hidden="true" />
+        <span className={`service-card__icon service-card__icon--${service.tone}`}>
+          <Icon size={22} strokeWidth={1.7} aria-hidden="true" />
+        </span>
+        <span className="service-card__number">{service.number}</span>
       </div>
       <div className="service-card__body">
-        <p className="service-card__category">{service.category} <span aria-hidden="true">/</span> {service.number}</p>
+        <p className="service-card__category">{service.category}</p>
         <h3>{service.name}</h3>
         <p className="service-card__description">{service.description}</p>
       </div>
-      <div className="service-card__bottom">Buka layanan <span className="visually-hidden"> di Portal Warga</span><ArrowRight size={16} aria-hidden="true" /></div>
+      <div className="service-card__bottom">
+        Buka layanan <span className="visually-hidden"> di Portal Warga</span>
+        <ArrowUpRight size={17} aria-hidden="true" />
+      </div>
     </a>
   );
 }
@@ -175,12 +253,17 @@ function Services() {
             <SectionLabel>LAYANAN UNTUK WARGA</SectionLabel>
             <h2 id="services-heading">Semua kebutuhan,<br /><em>lebih mudah dijangkau.</em></h2>
           </div>
-          <div className="section-heading__aside"><p>Dari urusan administrasi hingga kabar lingkungan, temukan layanan yang Anda butuhkan di sini.</p><span className="section-heading__counter">LAYANAN WARGA <i /> 01 — 06</span></div>
+          <div className="section-heading__aside">
+            <p>Dari urusan administrasi hingga kabar lingkungan, temukan layanan yang Anda butuhkan di sini.</p>
+            <span className="section-heading__counter">LAYANAN WARGA <i /> 01 — 06</span>
+          </div>
         </div>
         <div className="services-grid">
           {services.map((service) => <ServiceCard key={service.path} service={service} />)}
         </div>
-        <p className="services__note"><LockKeyhole size={16} aria-hidden="true" /> Layanan akan dibuka di Portal Warga. Beberapa layanan memerlukan akun resmi.</p>
+        <p className="services__note">
+          <LockKeyhole size={16} aria-hidden="true" /> Layanan akan dibuka di Portal Warga. Beberapa layanan memerlukan akun resmi.
+        </p>
       </div>
     </section>
   );
@@ -192,16 +275,25 @@ function Information() {
       <div className="container information__grid">
         <div className="information__visual">
           <div className="information__image-wrap">
-            <img src="/images/kebersamaan.jpg" alt="Ilustrasi warga berkegiatan bersama di jalan lingkungan" loading="lazy" />
+            <img
+              src="/images/komunitas-digital.jpg"
+              alt="Seorang warga mengenakan hijab bekerja dengan komputer jinjing di ruang komunitas"
+              loading="lazy"
+            />
             <span className="information__photo-note">FOTO ILUSTRASI</span>
           </div>
-          <div className="information__visual-caption"><span className="information__caption-icon"><HeartHandshake size={22} strokeWidth={1.6} aria-hidden="true" /></span><div><strong>Bersama terasa lebih dekat.</strong><p>Ruang untuk saling terhubung.</p></div></div>
+          <div className="information__visual-caption">
+            <span className="information__caption-icon"><Globe2 size={21} strokeWidth={1.6} aria-hidden="true" /></span>
+            <div><strong>Melek digital bersama.</strong><p>Ruang untuk saling terhubung.</p></div>
+          </div>
           <span className="information__decoration" aria-hidden="true">✳</span>
         </div>
         <div className="information__content">
           <SectionLabel>KABAR & KEBERSAMAAN</SectionLabel>
           <h2 id="information-heading">Karena lingkungan<br /><em>adalah tentang kita.</em></h2>
-          <p className="information__lead">Tetap terhubung dengan hal-hal yang berarti. Ikuti kabar terbaru, kenali kegiatan lingkungan, dan sampaikan aspirasi Anda.</p>
+          <p className="information__lead">
+            Tetap terhubung dengan hal-hal yang berarti. Ikuti kabar terbaru, kenali kegiatan lingkungan, dan sampaikan aspirasi Anda.
+          </p>
           <div className="information-list">
             <a href={portalLink('pengaduan')}>
               <span className="information-list__icon"><MessageCircleMore size={20} strokeWidth={1.7} aria-hidden="true" /></span>
@@ -211,6 +303,11 @@ function Information() {
             <a href={portalLink('kegiatan')}>
               <span className="information-list__icon"><CalendarDays size={20} strokeWidth={1.7} aria-hidden="true" /></span>
               <span><strong>Kegiatan lingkungan</strong><small>Lebih mudah ikut terlibat bersama</small></span>
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+            <a href={portalLink('dashboard')}>
+              <span className="information-list__icon"><Fingerprint size={20} strokeWidth={1.7} aria-hidden="true" /></span>
+              <span><strong>Data keluarga digital</strong><small>Aman, akurat, dan mudah diperbarui</small></span>
               <ArrowUpRight size={17} aria-hidden="true" />
             </a>
           </div>
@@ -224,18 +321,46 @@ function Information() {
 function About() {
   return (
     <section className="about" id="tentang" aria-labelledby="about-heading">
-      <div className="container about__inner">
-        <div className="about__symbol" aria-hidden="true"><span>✳</span></div>
-        <div className="about__copy">
-          <SectionLabel light>RUANG BERSAMA KITA</SectionLabel>
-          <h2 id="about-heading">Bukan sekadar tinggal,<br /><em>tapi juga saling mengenal.</em></h2>
-          <p>Ruang Warga hadir sebagai pintu menuju layanan dan informasi lingkungan. Supaya hal-hal penting lebih mudah ditemukan, dan kebersamaan tetap terasa dekat.</p>
-          <a className="button button--light" href={portalLink('tentang-kami')}>Tentang Portal Warga <ArrowUpRight size={17} aria-hidden="true" /></a>
+      <div className="about__map" aria-hidden="true">
+        <img src="/images/indonesia-network.svg" alt="" width="720" height="275" />
+      </div>
+      <div className="container">
+        <div className="about__inner">
+          <div className="about__copy">
+            <SectionLabel light>RUANG BERSAMA KITA</SectionLabel>
+            <h2 id="about-heading">Satu jaringan,<br /><em>dari Sabang sampai Merauke.</em></h2>
+            <p>
+              Ruang Warga hadir sebagai pintu menuju layanan dan informasi lingkungan. Supaya hal-hal penting lebih mudah ditemukan,
+              dan kebersamaan tetap terasa dekat — di mana pun warga berada.
+            </p>
+            <a className="button button--light" href={portalLink('tentang-kami')}>
+              Tentang Portal Warga <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+          </div>
+          <figure className="about__figure">
+            <div className="about__figure-frame">
+              <img
+                src="/images/warga-kampung.jpg"
+                alt="Tiga warga berdiri bersama di jalan lingkungan kampung pada pagi hari"
+                width="760"
+                height="950"
+                loading="lazy"
+              />
+            </div>
+            <figcaption>
+              <span><Wifi size={18} strokeWidth={1.7} aria-hidden="true" /></span>
+              <div><strong>Dari warga, untuk warga.</strong><p>Terhubung lewat satu portal.</p></div>
+            </figcaption>
+          </figure>
         </div>
         <div className="about__values">
-          <div><span><Check size={17} aria-hidden="true" /></span><p><strong>Mudah diakses</strong><small>Layanan dalam satu tempat</small></p></div>
-          <div><span><Check size={17} aria-hidden="true" /></span><p><strong>Lebih terhubung</strong><small>Informasi untuk warga</small></p></div>
-          <div><span><Check size={17} aria-hidden="true" /></span><p><strong>Tetap bersahabat</strong><small>Pelayanan untuk semua usia</small></p></div>
+          <div><span><Check size={16} aria-hidden="true" /></span><p><strong>Mudah diakses</strong><small>Layanan dalam satu tempat</small></p></div>
+          <div><span><Check size={16} aria-hidden="true" /></span><p><strong>Lebih terhubung</strong><small>Informasi untuk warga</small></p></div>
+          <div><span><Check size={16} aria-hidden="true" /></span><p><strong>Tetap bersahabat</strong><small>Pelayanan untuk semua usia</small></p></div>
+          <div className="about__values-note">
+            <span><Check size={16} aria-hidden="true" /></span>
+            <p><strong>Terhubung satu portal</strong><small>Satu akun untuk semua layanan</small></p>
+          </div>
         </div>
       </div>
     </section>
@@ -259,7 +384,10 @@ function Help() {
               <p>{faq.answer}</p>
             </details>
           ))}
-          <div className="help__privacy"><span><ShieldCheck size={20} aria-hidden="true" /></span><p>Ingin tahu tentang data Anda?<br /><a href={portalLink('kebijakan-privasi')}>Baca kebijakan privasi <ArrowUpRight size={14} aria-hidden="true" /></a></p></div>
+          <div className="help__privacy">
+            <span><ShieldCheck size={20} aria-hidden="true" /></span>
+            <p>Ingin tahu tentang data Anda?<br /><a href={portalLink('kebijakan-privasi')}>Baca kebijakan privasi <ArrowUpRight size={14} aria-hidden="true" /></a></p>
+          </div>
         </div>
       </div>
     </section>
@@ -270,12 +398,34 @@ function Footer() {
   return (
     <footer className="site-footer">
       <div className="container footer__main">
-        <div className="footer__brand"><Brand light /><p>Satu ruang, banyak cerita.<br />Untuk lingkungan yang lebih dekat.</p></div>
-        <div className="footer__column"><h2>JELAJAHI</h2><a href="#beranda">Beranda</a><a href="#layanan">Layanan Warga</a><a href="#informasi">Informasi</a><a href="#tentang">Tentang Kami</a></div>
-        <div className="footer__column"><h2>LAYANAN</h2><a href={portalLink('surat')}>Surat Pengantar</a><a href={portalLink('keuangan')}>Kas & Iuran</a><a href={portalLink('ronda')}>Jadwal Ronda</a><a href={portalLink('pengaduan')}>Aspirasi Warga</a></div>
-        <div className="footer__contact"><h2>BERSAMA LEBIH MUDAH</h2><p>Siap terhubung dengan lingkungan Anda?</p><a href={portalLink('masuk')}>Masuk ke Portal Warga <ArrowUpRight size={16} aria-hidden="true" /></a></div>
+        <div className="footer__brand">
+          <Brand light />
+          <p>Satu ruang, banyak cerita.<br />Untuk lingkungan yang lebih dekat.</p>
+        </div>
+        <div className="footer__column">
+          <h2>JELAJAHI</h2>
+          <a href="#beranda">Beranda</a>
+          <a href="#layanan">Layanan Warga</a>
+          <a href="#informasi">Informasi</a>
+          <a href="#tentang">Tentang Kami</a>
+        </div>
+        <div className="footer__column">
+          <h2>LAYANAN</h2>
+          <a href={portalLink('surat')}>Surat Pengantar</a>
+          <a href={portalLink('keuangan')}>Kas & Iuran</a>
+          <a href={portalLink('ronda')}>Jadwal Ronda</a>
+          <a href={portalLink('pengaduan')}>Aspirasi Warga</a>
+        </div>
+        <div className="footer__contact">
+          <h2>BERSAMA LEBIH MUDAH</h2>
+          <p>Siap terhubung dengan lingkungan Anda?</p>
+          <a href={portalLink('masuk')}>Masuk ke Portal Warga <ArrowUpRight size={16} aria-hidden="true" /></a>
+        </div>
       </div>
-      <div className="container footer__bottom"><p>© {new Date().getFullYear()} Ruang Warga. Dibuat untuk kebersamaan.</p><div><a href={portalLink('kebijakan-privasi')}>Kebijakan privasi</a><a href="#bantuan">Pusat bantuan</a></div></div>
+      <div className="container footer__bottom">
+        <p>© {new Date().getFullYear()} Ruang Warga. Dibuat untuk kebersamaan.</p>
+        <div><a href={portalLink('kebijakan-privasi')}>Kebijakan privasi</a><a href="#bantuan">Pusat bantuan</a></div>
+      </div>
     </footer>
   );
 }
@@ -289,6 +439,7 @@ export default function App() {
         <Hero />
         <WelcomeStrip />
         <Services />
+        <ConnectivityStrip />
         <Information />
         <About />
         <Help />
