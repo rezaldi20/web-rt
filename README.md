@@ -1,6 +1,6 @@
 # Ruang Warga
 
-Beranda publik yang responsif untuk membantu warga menemukan layanan dan informasi lingkungan. Dibangun dengan React dan Vite, dengan latar utama penuh tanpa panel kotak di atasnya.
+Beranda publik yang responsif untuk membantu warga menemukan layanan dan informasi lingkungan. Dibangun dengan React dan Vite, dengan latar utama penuh tanpa panel kotak di atasnya. Tema visualnya memakai palet hijau hutan, krem hangat, dan aksen pasir, dipadukan dengan ornamen jaringan titik sebagai lambang warga yang saling terhubung.
 
 ## Hubungan dengan Portal Warga
 
@@ -32,7 +32,7 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-Tes browser memeriksa navigasi, tautan layanan, menu ponsel, FAQ, ukuran layar, serta pemeriksaan aksesibilitas otomatis. Di lingkungan Linux minimal, Chromium mungkin membutuhkan paket sistem tambahan; jalankan `npx playwright install-deps chromium` bila diperlukan.
+Tes browser memeriksa navigasi, tautan layanan, menu ponsel, FAQ, ukuran layar, pemuatan seluruh gambar ilustrasi, serta pemeriksaan aksesibilitas otomatis. Di lingkungan Linux minimal, Chromium mungkin membutuhkan paket sistem tambahan; jalankan `npx playwright install-deps chromium` bila diperlukan.
 
 ## Vercel
 
@@ -40,7 +40,13 @@ Rilis awal tersedia di [web-rt-xi.vercel.app](https://web-rt-xi.vercel.app) seba
 
 Integrasi GitHub pada Vercel belum memiliki akses ke repositori `web-rt`. Rilis awal dibuat dari snapshot commit `8f82b124b32de845d46703901d6f7beab0a6ba2a`; perubahan baru **tidak otomatis diterbitkan**. Untuk mengaktifkan deployment otomatis, berikan akses repositori tersebut ke integrasi GitHub Vercel, hubungkan repositori ke proyek `web-rt`, lalu gunakan framework Vite dengan perintah instalasi `npm ci`, perintah build `npm run build`, dan direktori output `dist`. Perintah instalasi sementara di pengaturan proyek mengunduh snapshot tersebut hanya bila source deployment tidak memiliki `package-lock.json`.
 
+## Aset visual
+
+Semua gambar berada di `public/images` dan menampilkan suasana Indonesia: permukiman warga, warga berkegiatan di ruang komunitas, dan peta jaringan Indonesia dalam bentuk SVG (`indonesia-network.svg`, dibuat dari data batas wilayah dunia sehingga bebas dipakai).
+
 ## Kredit foto ilustrasi
 
-- Foto lingkungan: [Arief Komarudin / Unsplash](https://unsplash.com/photos/an-aerial-view-of-a-village-at-sunset-j7xWCyH2wYQ).
-- Foto kebersamaan: [Dio Alif Utomo / Pexels](https://www.pexels.com/photo/community-gathering-in-a-rural-village-street-36596582/).
+- Foto hero permukiman saat senja: [Arief Komarudin / Unsplash](https://unsplash.com/photos/an-aerial-view-of-a-village-at-sunset-j7xWCyH2wYQ).
+- Foto warga di jalan kampung: [Tom Fisk / Pexels](https://www.pexels.com/photo/people-standing-near-concrete-houses-while-looking-at-the-camera-5144306/) (Rumpin, Jawa Barat).
+- Foto warga belajar komputer di ruang komunitas: [Nur Rahmi Nailah (WMID) / Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Magang_Wikimedia_Indonesia_di_Ruang_Komunitas_Wikimedia_di_Yogyakarta_Periode_3.jpg), lisensi [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.id). Berkas dipotong (crop) dan disesuaikan warnanya untuk keperluan tata letak; versi turunan ini tetap mengikuti lisensi CC BY-SA 4.0.
+- Peta jaringan Indonesia (`indonesia-network.svg`) dibuat dari data [world-atlas](https://github.com/topojson/world-atlas) (Natural Earth, domain publik).

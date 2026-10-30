@@ -61,6 +61,27 @@ export const services = [
   },
 ];
 
+export const connectivity = [
+  {
+    value: '06',
+    unit: 'layanan',
+    title: 'Satu pintu digital',
+    description: 'Administrasi, kas, keamanan, sampai kabar lingkungan dalam satu tempat.',
+  },
+  {
+    value: '01',
+    unit: 'akun',
+    title: 'Satu akun warga',
+    description: 'Cukup sekali masuk untuk membuka seluruh layanan Portal Warga.',
+  },
+  {
+    value: '24',
+    unit: 'jam',
+    title: 'Kabar kapan saja',
+    description: 'Informasi dan aspirasi tetap bisa diakses dari mana pun warga berada.',
+  },
+];
+
 export const faqs = [
   {
     question: 'Bagaimana cara mendapatkan akun warga?',
